@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1>Expense Tracker</h1>
+        <p class="slogan">Manage your expenses with ease and clarity.</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Add/Edit Form -->
+      <section class="card form-card">
+        <h2 id="formTitle">Add New Expense</h2>
+        <form id="expenseForm" style="display: none">
+          <div class="input-group">
+            <label for="name">Expense Name</label>
+            <input type="text" id="name" placeholder="Groceries" />
+          </div>
+          <div class="input-group">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" placeholder="120" />
+          </div>
+          <div class="input-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option value="">-- Select Category --</option>
+              <option value="food">Food</option>
+              <option value="transport">Transport</option>
+              <option value="clothes">Clothes</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="health">Health</option>
+              <option value="education">Education</option>
+              <option value="utilities">Utilities</option>
+              <option value="subscriptions">Subscriptions</option>
+              <option value="gifts">Gifts</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="submitBtn">Add Expense</button>
+            <button type="button" id="cancelBtn">Cancel</button>
+          </div>
+        </form>
+        <button id="addBtn" class="primary-btn">+ Add New Expense</button>
+      </section>
+
+      <!-- Controls -->
+      <section class="card controls-card">
+        <div class="controls">
+          <div class="control-item">
+            <label for="sort">Sort By:</label>
+            <select id="sort" class="styled-select">
+              <option value="az">Name (A-Z)</option>
+              <option value="za">Name (Z-A)</option>
+              <option value="lowhigh">Amount (Low-High)</option>
+              <option value="highlow">Amount (High-Low)</option>
+              <option value="newest" selected>Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
+
+          <div class="control-item filter-group">
+            <span>Filter by Category:</span>
+            <div class="filter-buttons">
+              <button data-filter="all" class="filter-btn active">All</button>
+              <button data-filter="food" class="filter-btn">Food</button>
+              <button data-filter="transport" class="filter-btn">
+                Transport
+              </button>
+              <button data-filter="clothes" class="filter-btn">Clothes</button>
+              <button data-filter="entertainment" class="filter-btn">
+                Entertainment
+              </button>
+              <button data-filter="health" class="filter-btn">Health</button>
+              <button data-filter="education" class="filter-btn">
+                Education
+              </button>
+              <button data-filter="utilities" class="filter-btn">
+                Utilities
+              </button>
+              <button data-filter="subscriptions" class="filter-btn">
+                Subscriptions
+              </button>
+              <button data-filter="gifts" class="filter-btn">Gifts</button>
+              <button data-filter="other" class="filter-btn">Other</button>
+            </div>
+          </div>
+
+          <div class="control-item search-group">
+            <input type="text" id="search" placeholder="Search expenses..." />
+            <button id="searchBtn">🔍</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Expense List -->
+      <section class="card expense-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="expenseBody"></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4" id="totalRow">Total: 0 MAD</td>
+              <td><button id="clear">Clear all</button></td>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="empty-message" id="emptyMessage">No expenses yet!</div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
